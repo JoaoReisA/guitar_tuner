@@ -2,30 +2,34 @@ package service
 
 import (
 	"fmt"
-	"log"
-	"time"
 
 	"github.com/gordonklaus/portaudio"
 )
 
-func ReceiveAudioInput() {
-	portaudio.Initialize()
-	defer portaudio.Terminate()
-
-	inputBuffer := make([]int16, 44100) // Buffer for 1 second of audio
-
-	stream, err := portaudio.OpenDefaultStream(1, 0, 44100, len(inputBuffer), inputBuffer)
+// OpenAudioInputBufferStreamChannel abre uma stream de áudio e executa um callback para cada buffer capturado
+func OpenAudioInputBufferStreamChannel(streamCallback func(in []int16), sampleRate float64) (*portaudio.Stream, error) {
+	err := portaudio.Initialize()
 	if err != nil {
-		log.Fatal(err)
+		return nil, fmt.Errorf("falha ao inicializar PortAudio: %v", err)
 	}
-	defer stream.Close()
+
+	inputBuffer := make([]int16, int(sampleRate))
+
+	portAudioCallback := func(in []int16, out []int16) {
+		copy(inputBuffer, in)
+		streamCallback(inputBuffer)
+	}
+
+	stream, err := portaudio.OpenDefaultStream(1, 0, sampleRate, len(inputBuffer), portAudioCallback)
+	if err != nil {
+		return nil, fmt.Errorf("erro ao abrir stream: %v", err)
+	}
 
 	fmt.Println("Recording...")
-	stream.Start()
-	time.Sleep(time.Second)
-	stream.Stop()
+	err = stream.Start()
+	if err != nil {
+		return nil, fmt.Errorf("erro ao iniciar stream: %v", err)
+	}
 
-	fmt.Println(inputBuffer)
-	fmt.Println("Recording finished.")
-	// Process `inputBuffer` (e.g., save to file or analyze)
+	return stream, nil
 }
