@@ -14,8 +14,9 @@ func main() {
 	cmd.Execute()
 
 	stream, err := service.OpenAudioInputBufferStreamChannel(func(in []int16) {
-		//TODO: Handle audio input with FFR
-		fmt.Println("Input buffer (first 100 samples):", in[:100]) // Exibe os primeiros 100 valores
+		fftResult := service.FFRFromAudioInputBuffer(in)
+		service.FindDominantFrequency(fftResult)
+		// fmt.Println("Dominant frequency:", frequency)
 	}, utils.SAMPLE_RATE)
 
 	if err != nil {
@@ -23,7 +24,7 @@ func main() {
 		return
 	}
 
-	time.Sleep(5 * time.Second)
+	time.Sleep(60 * time.Second)
 
 	stream.Close()
 	portaudio.Terminate()

@@ -3,6 +3,8 @@ github.com/gordonklaus/portaudio v0.0.0-20250206071425-98a94950218b h1:WEuQWBxel
 github.com/gordonklaus/portaudio v0.0.0-20250206071425-98a94950218b/go.mod h1:esZFQEUwqC+l76f2R8bIWSwXMaPbp79PppwZ1eJhFco=
 github.com/inconshreveable/mousetrap v1.1.0 h1:wN+x4NVGpMsO7ErUn/mUI3vEoE6Jt13X2s0bqwp9tc8=
 github.com/inconshreveable/mousetrap v1.1.0/go.mod h1:vpF70FUmC8bwa3OWnCshd2FqLfsEA9PFc4w1p2J65bw=
+github.com/mjibson/go-dsp v0.0.0-20180508042940-11479a337f12 h1:dd7vnTDfjtwCETZDrRe+GPYNLA1jBtbZeyfyE8eZCyk=
+github.com/mjibson/go-dsp v0.0.0-20180508042940-11479a337f12/go.mod h1:i/KKcxEWEO8Yyl11DYafRPKOPVYTrhxiTRigjtEEXZU=
 github.com/russross/blackfriday/v2 v2.1.0/go.mod h1:+Rmxgy9KzJVeS9/2gXHxylqXiyQDYRxCVz55jmeOWTM=
 github.com/spf13/cobra v1.9.1 h1:CXSaggrXdbHK9CF+8ywj8Amf7PBRmPCOJugH954Nnlo=
 github.com/spf13/cobra v1.9.1/go.mod h1:nDyEzZ8ogv936Cinf6g1RU9MRY64Ir93oCnqb9wxYW0=

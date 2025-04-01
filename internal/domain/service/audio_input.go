@@ -2,6 +2,7 @@ package service
 
 import (
 	"fmt"
+	"guitar_tuner/utils"
 
 	"github.com/gordonklaus/portaudio"
 )
@@ -13,7 +14,7 @@ func OpenAudioInputBufferStreamChannel(streamCallback func(in []int16), sampleRa
 		return nil, fmt.Errorf("falha ao inicializar PortAudio: %v", err)
 	}
 
-	inputBuffer := make([]int16, int(sampleRate))
+	inputBuffer := make([]int16, utils.BUFFER_SIZE)
 
 	portAudioCallback := func(in []int16, out []int16) {
 		copy(inputBuffer, in)
