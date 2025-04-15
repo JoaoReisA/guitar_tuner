@@ -35,16 +35,17 @@ func NoteFromFrequency(frequency float64) domain.Note {
 		for _, freq := range v {
 			if freq == closestFrequency {
 				return domain.Note{
-					Name:      i,
-					Frequency: freq,
+					Name:              i,
+					CurrentFrequency:  frequency,
+					ExpectedFrequency: freq,
 				}
 			}
 		}
 	}
 
 	return domain.Note{
-		Name:      domain.NoteSymbol(0),
-		Frequency: frequency,
+		Name:             domain.NoteSymbol(0),
+		CurrentFrequency: frequency,
 	}
 }
 

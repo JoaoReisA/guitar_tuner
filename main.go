@@ -18,7 +18,7 @@ func main() {
 		fftResult := usecase.FFRFromAudioInputBuffer(in)
 		dominantFrequency := usecase.FindDominantFrequency(fftResult)
 		note := usecase.NoteFromFrequency(dominantFrequency)
-		fmt.Println("Current Note:", note.Name.String(), note.Frequency)
+		fmt.Println("Current Note:", note.Name.String(), note.CurrentFrequency, note.ExpectedFrequency)
 	}, utils.SAMPLE_RATE)
 
 	if err != nil {

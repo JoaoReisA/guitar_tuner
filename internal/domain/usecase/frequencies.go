@@ -1,7 +1,6 @@
 package usecase
 
 import (
-	"fmt"
 	"guitar_tuner/utils"
 	"math"
 	"math/cmplx"
@@ -64,6 +63,5 @@ func FindDominantFrequency(fftResult []complex128) float64 {
 		}
 	}
 
-	fmt.Printf("Real Dominant Frequency: %.2f Hz\n", detectedFrequency)
 	return detectedFrequency
 }

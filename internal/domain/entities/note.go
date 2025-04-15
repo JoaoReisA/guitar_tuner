@@ -1,6 +1,7 @@
 package domain
 
 type Note struct {
-	Name      NoteSymbol
-	Frequency float64
+	Name              NoteSymbol
+	CurrentFrequency  float64
+	ExpectedFrequency float64
 }
