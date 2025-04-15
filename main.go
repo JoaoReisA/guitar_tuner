@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"guitar_tuner/cmd"
 	"guitar_tuner/internal/domain/service"
+	"guitar_tuner/internal/domain/usecase"
 	"guitar_tuner/utils"
 	"time"
 
@@ -14,9 +15,10 @@ func main() {
 	cmd.Execute()
 
 	stream, err := service.OpenAudioInputBufferStreamChannel(func(in []int16) {
-		fftResult := service.FFRFromAudioInputBuffer(in)
-		service.FindDominantFrequency(fftResult)
-		// fmt.Println("Dominant frequency:", frequency)
+		fftResult := usecase.FFRFromAudioInputBuffer(in)
+		dominantFrequency := usecase.FindDominantFrequency(fftResult)
+		note := usecase.NoteFromFrequency(dominantFrequency)
+		fmt.Println("Current Note:", note.Name.String(), note.Frequency)
 	}, utils.SAMPLE_RATE)
 
 	if err != nil {

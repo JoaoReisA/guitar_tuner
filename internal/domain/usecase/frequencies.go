@@ -1,4 +1,4 @@
-package service
+package usecase
 
 import (
 	"fmt"
@@ -64,6 +64,6 @@ func FindDominantFrequency(fftResult []complex128) float64 {
 		}
 	}
 
-	fmt.Printf("Dominant Frequency: %.2f Hz\n", detectedFrequency)
+	fmt.Printf("Real Dominant Frequency: %.2f Hz\n", detectedFrequency)
 	return detectedFrequency
 }
