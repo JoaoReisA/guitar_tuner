@@ -58,7 +58,7 @@ func FindDominantFrequency(fftResult []complex128) float64 {
 
 	// Verifica se a frequência detectada é um harmônico de uma frequência mais baixa
 	for i := maxIndex / 2; i > 1; i-- {
-		if magnitudeSpectrum[i] > (maxMag * 0.3) { // Se a fundamental tem pelo menos 50% da força do harmônico
+		if magnitudeSpectrum[i] > (maxMag * 0.3) { // Se a fundamental tem pelo menos 30% da força do harmônico
 			detectedFrequency = float64(i) * utils.SAMPLE_RATE / float64(utils.BUFFER_SIZE)
 			break
 		}

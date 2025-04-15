@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"guitar_tuner/cmd"
-	"guitar_tuner/internal/domain/service"
+	"guitar_tuner/internal/data/service"
 	"guitar_tuner/internal/domain/usecase"
 	"guitar_tuner/utils"
 	"time"
