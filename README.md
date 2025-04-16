@@ -30,6 +30,8 @@ cd bin
 
 > The `tune` command starts microphone input reading and displays a visual interface with real-time note feedback.
 
+> To run the project after cloning the repo you need to have `portaudio` installed in your system.
+
 ---
 
 ## How the Code Works
