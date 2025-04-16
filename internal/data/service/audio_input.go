@@ -23,13 +23,12 @@ func OpenAudioInputBufferStreamChannel(streamCallback func(in []int16), sampleRa
 
 	stream, err := portaudio.OpenDefaultStream(1, 0, sampleRate, len(inputBuffer), portAudioCallback)
 	if err != nil {
-		return nil, fmt.Errorf("erro ao abrir stream: %v", err)
+		return nil, fmt.Errorf("Error on open Stream: %v", err)
 	}
 
-	fmt.Println("Recording...")
 	err = stream.Start()
 	if err != nil {
-		return nil, fmt.Errorf("erro ao iniciar stream: %v", err)
+		return nil, fmt.Errorf("Error on start stream: %v", err)
 	}
 
 	return stream, nil
