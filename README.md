@@ -5,14 +5,14 @@
 
 ---
 
-## 📦 About
+## About
 
 **Guitar Tuner CLI** is a command-line application written in Go that turns your terminal into a real-time interactive guitar tuner.  
 It uses powerful libraries such as [PortAudio](http://www.portaudio.com/), [BubbleTea](https://github.com/charmbracelet/bubbletea), [Lipgloss](https://github.com/charmbracelet/lipgloss), and [Cobra](https://github.com/spf13/cobra) to provide a stylish and accurate note detection experience straight from your system’s microphone.
 
 ---
 
-## 🚀 How to Run
+## How to Run
 
 ### Run directly with `go run`:
 
