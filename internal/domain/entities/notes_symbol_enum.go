@@ -17,7 +17,6 @@ const (
 	B
 )
 
-// String method to convert enum to string
 func (s NoteSymbol) String() string {
 	return [...]string{"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"}[s]
 }

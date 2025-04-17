@@ -7,7 +7,6 @@ import (
 	"github.com/gordonklaus/portaudio"
 )
 
-// OpenAudioInputBufferStreamChannel abre uma stream de áudio e executa um callback para cada buffer capturado
 func OpenAudioInputBufferStreamChannel(streamCallback func(in []int16), sampleRate float64) (*portaudio.Stream, error) {
 	err := portaudio.Initialize()
 	if err != nil {

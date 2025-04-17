@@ -9,7 +9,7 @@ import (
 )
 
 func normalizeBuffer(inputBuffer []int16) []float64 {
-	maxVal := float64(1 << 15) // Normalizar para [-1, 1]
+	maxVal := float64(1 << 15) // Normalize to [-1, 1]
 	normalized := make([]float64, len(inputBuffer))
 	for i, v := range inputBuffer {
 		normalized[i] = float64(v) / maxVal
@@ -37,7 +37,6 @@ func FindDominantFrequency(fftResult []complex128) float64 {
 	var maxMag float64
 	var maxIndex int
 
-	// Armazena a magnitude máxima encontrada para cada índice
 	magnitudeSpectrum := make([]float64, len(fftResult)/2)
 
 	for i := 1; i < len(magnitudeSpectrum); i++ {
@@ -46,7 +45,6 @@ func FindDominantFrequency(fftResult []complex128) float64 {
 
 		frequency := float64(i) * utils.SAMPLE_RATE / float64(utils.BUFFER_SIZE)
 
-		// Apenas considera frequências dentro da faixa relevante
 		if magnitude > maxMag && frequency >= utils.MIN_FREQUENCY && frequency <= utils.MAX_FREQUENCY {
 			maxMag = magnitude
 			maxIndex = i
@@ -55,9 +53,9 @@ func FindDominantFrequency(fftResult []complex128) float64 {
 
 	detectedFrequency := float64(maxIndex) * utils.SAMPLE_RATE / float64(utils.BUFFER_SIZE)
 
-	// Verifica se a frequência detectada é um harmônico de uma frequência mais baixa
+	// check if the detected frequency is a harmonic for a lower frequency
 	for i := maxIndex / 2; i > 1; i-- {
-		if magnitudeSpectrum[i] > (maxMag * 0.3) { // Se a fundamental tem pelo menos 30% da força do harmônico
+		if magnitudeSpectrum[i] > (maxMag * 0.3) { // fundamental have at least 30% of Harmonics
 			detectedFrequency = float64(i) * utils.SAMPLE_RATE / float64(utils.BUFFER_SIZE)
 			break
 		}

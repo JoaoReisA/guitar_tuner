@@ -38,12 +38,21 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 }
 
 func (m model) View() string {
+	asciiLogo := `
+  ________      .__  __                 ___________                         
+ /  _____/ __ __|__|/  |______ _______  \__    ___/_ __  ____   ___________ 
+/   \  ___|  |  \  \   __\__  \\_  __ \   |    | |  |  \/    \_/ __ \_  __ \
+\    \_\  \  |  /  ||  |  / __ \|  | \/   |    | |  |  /   |  \  ___/|  | \/
+ \______  /____/|__||__| (____  /__|      |____| |____/|___|  /\___  >__|   
+        \/                    \/                            \/     \/       
+	`
+	logo := logoStyle.Render(asciiLogo)
 	bar := renderBar(m.currentFreq, m.expectedFreq)
 	header := headerStyle.Render(fmt.Sprintf("   %s (%.2f Hz) Expected", m.note, m.expectedFreq))
 	value := fmt.Sprintf(" %.2f Hz", m.currentFreq)
 	footer := footerStyle.Render("[Q] to quit")
 
-	return fmt.Sprintf("%s\n%s %s\n\n%s", header, bar, value, footer)
+	return fmt.Sprintf("%s\n\n%s\n%s %s\n\n%s", logo, header, bar, value, footer)
 }
 
 func renderBar(current, expected float64) string {
