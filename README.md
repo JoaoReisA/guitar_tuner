@@ -69,8 +69,7 @@ The audio processing pipeline includes:
 
 Once the dominant frequency is determined:
 
-- A peak-finding algorithm with **O(N log N)** complexity extracts relevant frequency data.
-- A note is matched using a **O(log N)** optimized lookup table.
+- Find the correspondent note inside a Map.
 
 ---
 
@@ -80,12 +79,6 @@ The interface is built using the awesome Charm ecosystem:
 
 - **[Bubble Tea](https://github.com/charmbracelet/bubbletea)**: manages interactive state and input.
 - **[Lipgloss](https://github.com/charmbracelet/lipgloss)**: adds visual style to the CLI.
-
-#### UI Includes:
-
-- Current note name
-- Detected vs expected frequency
-- A dynamic tuning bar that shows how close you are to perfect tuning
 
 ---
 
@@ -106,5 +99,6 @@ The interface is built using the awesome Charm ecosystem:
 - PortAudio installed on your system
   - macOS: `brew install portaudio`
   - Ubuntu/Debian: `sudo apt install portaudio19-dev`
+  - windows: Use an unix based terminal ¯\_(ツ)_/¯
 
 ---
